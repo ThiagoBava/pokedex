@@ -1,6 +1,7 @@
 import React from 'react';
 import AnimatedLottieView from 'lottie-react-native';
 import pokemonAnimation from './pikachu.json'
+import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 
 import * as S from './styles'
 
