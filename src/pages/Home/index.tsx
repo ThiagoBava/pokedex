@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Text } from 'react-native';
+import { Alert, FlatList, Text } from 'react-native';
+import { Card } from '../../components/Card';
 import api from '../../service/api';
-import * as S from './styles'
+import * as S from './styles';
 
 type PokemonType = {
     type: string
@@ -55,6 +56,13 @@ const [pokemons, setPokemons] = useState<Pokemon[]>([])
     }
 
     return <S.Container>
-        {/*{pokemons.map(item => <Text>{item.name}</Text>)}*/}
+        <FlatList
+            data={pokemons}
+            keyExtractor={pokemon => pokemon.id.toString()}
+            renderItem={({item: Pokemon}) => (
+                <Card 
+                data={Pokemon}/>
+            )}
+        />
     </S.Container>
 }
