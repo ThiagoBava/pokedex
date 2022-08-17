@@ -8,7 +8,7 @@ export const PokemonCard = styled.TouchableOpacity<PokemonType>`
     ${({theme, type}) => css`
         background-color: ${theme.colors.backgroundCard[type]};
         border-radius: 10px;
-        margin-top: 10px;
+        margin-top: 20px;
         flex-direction: row;
         padding: 20px;
     `}
@@ -75,4 +75,22 @@ export const PokemonTypeText = styled.Text`
         color: ${theme.colors.white};
         text-transform: capitalize;
     `}
+`
+
+export const RightSide = styled.View`
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    position: relative;
+`
+
+export const PokemonImage = styled.Image`
+    margin-top: -35px;
+    width: 130px;
+    height: 130px;
+`
+
+export const PokeballDetail = styled.Image`
+    position: absolute;
+    right: -20px;
 `
