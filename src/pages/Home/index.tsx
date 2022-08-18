@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, FlatList, Text } from 'react-native';
 import { Card, Pokemon, PokemonType } from '../../components/Card';
+import { FadeAnimation } from '../../components/FadeAnimation';
 import api from '../../service/api';
 import * as S from './styles';
 
@@ -58,14 +59,16 @@ const [pokemons, setPokemons] = useState<Pokemon[]>([])
         }
     }
 
-    return <S.Container>
+    return ( <S.Container>
         <FlatList
             data={pokemons}
             keyExtractor={pokemon => pokemon.id.toString()}
             renderItem={({item: Pokemon}) => (
-                <Card 
-                data={Pokemon}/>
+                <FadeAnimation>
+                <Card data={Pokemon}/>
+                </FadeAnimation>
             )}
         />
     </S.Container>
+    );
 }
