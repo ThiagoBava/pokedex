@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Alert, FlatList, Text } from 'react-native';
 import { Card, Pokemon, PokemonType } from '../../components/Card';
 import { FadeAnimation } from '../../components/FadeAnimation';
+import pokeballHeader from '../../assets/img/pokeball.png'
 import api from '../../service/api';
 import * as S from './styles';
 
@@ -61,12 +62,19 @@ const [pokemons, setPokemons] = useState<Pokemon[]>([])
 
     return ( <S.Container>
         <FlatList
+        ListHeaderComponent={
+            <>
+                <S.Header source={pokeballHeader}/>
+                <S.Tittle>Pokedex</S.Tittle>
+            </>
+        }
+            contentContainerStyle={{
+                paddingHorizontal: 20
+            }}
             data={pokemons}
             keyExtractor={pokemon => pokemon.id.toString()}
             renderItem={({item: Pokemon}) => (
-                <FadeAnimation>
                 <Card data={Pokemon}/>
-                </FadeAnimation>
             )}
         />
     </S.Container>
