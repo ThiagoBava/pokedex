@@ -6,6 +6,7 @@ import * as S from './styles'
 import { Button } from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 
+
 export function Welcome(){
     const {navigate}  = useNavigation()
     function handleNavigation(){

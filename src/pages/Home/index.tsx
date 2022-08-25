@@ -5,6 +5,8 @@ import { FadeAnimation } from '../../components/FadeAnimation';
 import pokeballHeader from '../../assets/img/pokeball.png'
 import api from '../../service/api';
 import * as S from './styles';
+import { useNavigation } from '@react-navigation/native';
+
 
 {/*type PokemonType = {
     type: {
@@ -24,8 +26,15 @@ type Request = {
     types: PokemonType[]
 }
 export function Home(){
-
 const [pokemons, setPokemons] = useState<Pokemon[]>([])
+const {navigate}  = useNavigation()
+
+
+function handleNavigation(pokemonId: number){
+    navigate('About', {
+        pokemonId,
+    })
+}
 
     useEffect(() => {
         async function getAllPokemons(){
@@ -74,7 +83,9 @@ const [pokemons, setPokemons] = useState<Pokemon[]>([])
             data={pokemons}
             keyExtractor={pokemon => pokemon.id.toString()}
             renderItem={({item: Pokemon}) => (
-                <Card data={Pokemon}/>
+                <Card data={Pokemon} onPress={() => {
+                    handleNavigation(Pokemon.id)
+                }}/>
             )}
         />
     </S.Container>
