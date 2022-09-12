@@ -128,6 +128,26 @@ return load ? (
 
     <S.Container>
       <S.Tittle type={pokemon.types[0].type.name}>Status Basicos</S.Tittle>
+
+      {pokemon.stats.map(attribute => 
+        <S.StatusBar key={attribute.stat.name}>
+          <S.Attributes>{attribute.stat.name}</S.Attributes>
+          <S.AttributesValue>{attribute.base_stat}</S.AttributesValue>
+
+        <S.ContentBar>
+          <S.ProgressBar type={pokemon.types[0].type.name} 
+          borderWidth={0}
+          progress={100}
+          width={attribute.base_stat}
+          color={pokemon.color}/>
+        </S.ContentBar>
+
+      </S.StatusBar>)}
+
+      <S.Tittle type={pokemon.types[0].type.name}>Habilidades</S.Tittle>
+        {pokemon.abilities.map(currentAbility => <S.Ability>
+          {currentAbility.ability.name}
+        </S.Ability>)}
     </S.Container>
   </ScrollView>
 );
